@@ -73,14 +73,20 @@ const cafedelites = ($) => {
         recipeIngredientObject.push([])
         let ingredientList = $(".wprm-recipe-ingredient", value)
         ingredientList.each((i2, v2) => {
-            recipeIngredientObject[index].push($(v2).text())
+            let ing = $(v2).text()
+            if (ing.substring(0,1) === "▢") {
+                ing = ing.substring(1)
+            }
+            recipeIngredientObject[index].push(ing)
         })
     })
     // Create/fill instructions Object
     let recipeInstructionsObject = []
     let ingredientInstructions = $(".wprm-recipe-instruction")
     ingredientInstructions.each((index, value) => {
-        recipeInstructionsObject.push($(value).text())
+        let text = $(value).text()
+        text = text.split("<img")[0]
+        recipeInstructionsObject.push(text)
     })
     //  Create recipe Object
     let recipeObject = {

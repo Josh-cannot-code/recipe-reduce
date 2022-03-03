@@ -3,3 +3,7 @@
 /workspace.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+# Node Modules
+/client/node_modules
+/api/node_modules
+
