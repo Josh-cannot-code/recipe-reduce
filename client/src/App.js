@@ -39,7 +39,7 @@ class App extends React.Component {
           loader: 'loading',
           searched: false
       })
-    const response = await fetch('http://localhost:9000/searchEngine/', {
+    const response = await fetch('/searchEngine', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
