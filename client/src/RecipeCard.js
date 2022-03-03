@@ -1,16 +1,19 @@
 const RecipeCard = (props) => {
     return (
         <div className="p-4">
-            <h2 className="text-2xl text-center p-2">{props.json.name}</h2>
+            <h2 className="text-3xl text-center p-3">{props.json.name}</h2>
             <hr/>
             <div className="">
-                <h3 className="text-2xl p-2">Ingredients</h3>
+                <h3 className="text-2xl p-2 underline">Ingredients</h3>
                 <Ingredients names={props.json.ingredients.ingredientsNames}
                 list={props.json.ingredients.ingredientsContent}/>
             </div>
             <div className="instructionsContainer">
-                <h3 className="text-2xl p-2">Instructions</h3>
+                <h3 className="text-2xl p-2 underline">Instructions</h3>
                 <Instructions instructions={props.json.instructions} />
+            </div>
+            <div className="pb-10">
+                Source: <a href={props.json.websiteUrl} className="no-underline hover:underline text-sky-600">{props.json.websiteName}</a>
             </div>
         </div>
     )
@@ -48,7 +51,11 @@ const Ingredients = (props) => {
                     }
                 }
                 catch (e) {
-                    ingredients.push(<li key={100}>Could not fetch ingredients</li> )
+                    ingredients.push(
+                        <li key={100}>
+                            Could not fetch ingredients, please visit source website for full ingredients list.
+                        </li>
+                    )
                 }
                 names.push(
                     <li key={i}>

@@ -1,6 +1,7 @@
 const rp = require('request-promise')
 const cheerio = require('cheerio')
 const pretty = require('pretty')
+const url = require("url");
 
 // options to pass into rp
 const options = (url) => {
@@ -51,14 +52,16 @@ const siteFilter = async (urlList) => {
                 let $ = cheerio.load(response.body)
                 let wprmChek = $(".wprm-recipe-instruction")
                 if (wprmChek.text() === ''){ throw "not wprm" }
-                return $
+                return [$, url]
             }
         }).catch(_ => { return null })
     })
     return (await Promise.all(pagePromises)).filter(item => item !== null)
 }
 
-const cafedelites = ($) => {
+const cafedelites = (site) => {
+    let $ = site[0]
+    let link = site[1]
     // Fill recipe objects
     let recipeName = $(".wprm-recipe-name").text()
     let recipeNameObject = []
@@ -95,7 +98,9 @@ const cafedelites = ($) => {
             "ingredientsNames" : recipeNameObject,
             "ingredientsContent" :recipeIngredientObject
         },
-        "instructions": recipeInstructionsObject
+        "instructions": recipeInstructionsObject,
+        "websiteUrl": link,
+        "websiteName": link.split('/')[2] + '/' + link.split('/')[3]
     }
     return recipeObject
 }
