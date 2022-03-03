@@ -70,6 +70,8 @@ const PageComponent = (props) => {
               <br/>
         <button id="searchButton" onClick={() => props.getRecipes(value)}
             className="border rounded m-2 p-1">Search</button>
+              <br/>
+              <span>loading times may be long this is a slow server</span>
           </div>
         <div id="recipeContainer" className="p-6 pr-20 pl-20">
             {props.load}
