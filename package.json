@@ -1,0 +1,21 @@
+{
+  "name": "recipe-reduce-attempt-6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node api/app.js",
+    "build": "cd client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Josh-cannot-code/recipe-reduce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Josh-cannot-code/recipe-reduce/issues"
+  },
+  "homepage": "https://github.com/Josh-cannot-code/recipe-reduce#readme"
+}
